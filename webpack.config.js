@@ -19,5 +19,13 @@ module.exports = {
     use: ["style-loader", "css-loader"]
     }
   ]},
-  plugins: [htmlPlugin]
+  plugins: [htmlPlugin],
+  {
+    test: /\.css$/,
+    use: [
+        { loader: 'style-loader' },
+        { loader: 'css-loader' },
+        { loader: 'less-loader' }
+    ]
+  }
 };

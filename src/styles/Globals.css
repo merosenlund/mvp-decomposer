@@ -1,0 +1,25 @@
+.tasks {
+  background-color: tan;
+  height: 50vh;
+}
+
+.brainDump {
+  background-color: thistle;
+  height: 50vh;
+}
+
+#app {
+  background-color: peru;
+  display: flex;
+  flex-direction: column;
+}
+
+div.DraftEditor-root {
+  height: 100%;
+  overflow: auto;
+}
+
+div.DraftEditor-editorContainer,
+div.public-DraftEditor-content {
+  height: 100%;
+}

@@ -3,7 +3,7 @@ import React from 'react';
 
 const Tasks = () => {
   return (
-    <div>Tasks Zone!</div>
+    <div className="tasks">Tasks Zone!</div>
   )
 }
 
