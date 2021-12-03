@@ -18,7 +18,7 @@ const BrainDump = () => {
 
   return (
     <div onKeyUp={onEnter} className="brainDump">
-      <div>Braind Dump Zone</div>
+      <div>Brain Dump Zone</div>
       <Editor editorState={editorState} onChange={setEditorState}/>
     </div>
   );
