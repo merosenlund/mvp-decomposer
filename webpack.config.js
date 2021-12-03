@@ -4,19 +4,20 @@ const htmlPlugin = new HtmlWebPackPlugin({
  filename: "./index.html"
 });
 module.exports = {
-mode: 'development',
-  module: {
-    rules: [{
-   test: /\.js$/,
-   exclude: /node_modules/,
-   use: {
-     loader: "babel-loader"
-   }
- },
-  {
-   test: /\.css$/,
-   use: ["style-loader", "css-loader"]
-  }
-]},
- plugins: [htmlPlugin]
+  devtool: 'source-map',
+  mode: 'development',
+    module: {
+      rules: [{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader"
+    }
+  },
+    {
+    test: /\.css$/,
+    use: ["style-loader", "css-loader"]
+    }
+  ]},
+  plugins: [htmlPlugin]
 };

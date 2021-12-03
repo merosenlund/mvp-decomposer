@@ -7,8 +7,8 @@ import BrainDump from './components/BrainDump.js';
 const App = () => {
   return (
     <div>
-      <BrainDump></BrainDump>
       <Tasks></Tasks>
+      <BrainDump></BrainDump>
     </div>
   )
   }
