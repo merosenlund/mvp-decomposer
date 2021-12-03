@@ -16,14 +16,12 @@ const BrainDump = () => {
       if (text !== '') {
         addLoop(text);
       }
-      // console.log(text);
-      // debugger;
     }
   }
 
   return (
     <div onKeyUp={onEnter} className="brainDump">
-      <div>Brain Dump Zone</div>
+      <h5>Brain Dump Zone</h5>
       <Editor editorState={editorState} onChange={setEditorState}/>
     </div>
   );
