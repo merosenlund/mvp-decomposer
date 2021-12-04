@@ -2,13 +2,13 @@ const data = require('./db.js').loops;
 
 
 module.exports.getSubTasks = (loopId) => {
-  let subtaskIds = data[loopId].subtasks;
-  let subtasks = subtaskIds.map((id) => {
-    let subtask = data[id];
-    subtask.id = id;
-    return subtask;
+  let taskIds = data[loopId].tasks;
+  let tasks = taskIds.map((id) => {
+    let task = data[id];
+    task.id = id;
+    return task;
   })
-  return subtasks;
+  return tasks;
 
 }
 

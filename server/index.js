@@ -8,8 +8,15 @@ const questions = require('../db/questions.js');
 const references = require('../db/references.js');
 
 app.use(express.static('dist'));
+app.use(express.json());
 
 
+
+app.get('/loops/:loopId', (req, res) => {
+  let loopId = req.params.loopId;
+  let loop = db.getLoop(loopId);
+  res.status(200).send(loop);
+})
 
 app.get('/loops/:loopId/subtasks', (req, res) => {
   let loopId = req.params.loopId;
@@ -27,6 +34,13 @@ app.get('/loops/:loopId/references', (req, res) => {
   let loopId = req.params.loopId;
   let subReferences = references.getReferences(loopId);
   res.status(200).send(subReferences);
+})
+
+app.post('/loops', async (req, res) => {
+  let loop = req.body.data.loop;
+  let parentId = req.body.data.parentId;
+  await db.addLoop(loop, parentId);
+  res.sendStatus(200)
 })
 
 

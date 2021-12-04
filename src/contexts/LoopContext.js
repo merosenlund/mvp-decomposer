@@ -15,17 +15,21 @@ export const addLoopContext = () => {
 
 
 export const LoopProvider = ({children}) => {
-  const [loops, updateLoops] = useState([]);
+  const [currentLoop, updateCurrentLoop] = useState(1);
 
-  const addLoop = (newLoop) => {
-    // Eventually I will add an axios request here to add it to the backend and then get updated loops for the front end... I'm not sure if that will be the best idea but we'll see when I get there.
-    let newLoops = loops.slice();
-    newLoops.push(newLoop);
-    updateLoops(newLoops);
+
+
+  const addLoop = (loop) => {
+    return axios.post('/loops', {
+      data: {
+        loop: loop,
+        parentId: currentLoop
+      }
+    })
   }
 
   return (
-    <LoopContext.Provider value={loops}>
+    <LoopContext.Provider value={currentLoop}>
       <AddLoopContext.Provider value={addLoop}>
         {children}
       </AddLoopContext.Provider>

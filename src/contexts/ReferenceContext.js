@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import {addLoopContext, useLoopContext} from '../contexts/LoopContext.js';
 
 
 const ReferencesContext = React.createContext();
@@ -16,9 +17,11 @@ export const addReferenceContext = () => {
 
 export const ReferenceProvider = ({children}) => {
   const [references, updateReferences] = useState([]);
+  const currentLoop = useLoopContext();
+  const addLoop = addLoopContext();
 
   useEffect(async () => {
-    let newReferences = await getReferences(1);
+    let newReferences = await getReferences(currentLoop);
     updateReferences(newReferences)
   }, [])
 
@@ -28,10 +31,9 @@ export const ReferenceProvider = ({children}) => {
     return newReferences;
   }
 
-  const addReference = (newLoop) => {
-    // Eventually I will add an axios request here to add it to the backend and then get updated loops for the front end... I'm not sure if that will be the best idea but we'll see when I get there.
-    let newLoops = references.slice();
-    newLoops.push(newLoop);
+  const addReference = async (loop) => {
+    await addLoop(loop);
+    let newLoops = await getReferences(currentLoop);
     updateReferences(newLoops);
   }
 

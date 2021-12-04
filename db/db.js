@@ -9,8 +9,14 @@
 
 
 
-module.exports.addLoop = (loopId, loop) => {
+module.exports.addLoop = (loop, parentId) => {
+  module.exports.loops[parentId][`${loop.type}s`].push(loop.id);
+  module.exports.loops[loop.id] = loop
+  module.exports.loops[loop.id] = loop
+}
 
+module.exports.getLoop = (loopId) => {
+  return module.exports.loops[loopId];
 }
 
 
@@ -21,7 +27,7 @@ module.exports.loops = {
     type: 'task',
     text: 'Get the database set up',
     done: false,
-    subtasks: [4],
+    tasks: [4],
     questions: [2],
     references: [3],
     relatedReferences: [3],

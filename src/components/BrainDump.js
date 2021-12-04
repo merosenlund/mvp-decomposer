@@ -1,11 +1,16 @@
 import React, {useState} from 'react';
 import {Editor, EditorState} from 'draft-js';
 import {addLoopContext} from '../contexts/LoopContext.js';
+import {addTaskContext} from '../contexts/TaskContext.js';
+import {addQuestionContext} from '../contexts/QuestionContext.js';
+import {addReferenceContext} from '../contexts/ReferenceContext.js';
 
 
 const BrainDump = () => {
   const [editorState, setEditorState] = useState(() => EditorState.createEmpty(),);
-  const addLoop = addLoopContext();
+  const addTask = addTaskContext();
+  const addQuestion = addQuestionContext();
+  const addReference = addReferenceContext();
 
   const onEnter = (e) => {
     if (e.code === 'Enter') {
@@ -14,11 +19,24 @@ const BrainDump = () => {
       let secondToLastBlock = contentState.getBlockBefore(lastBlock.getKey())
       let text = secondToLastBlock.getText();
       let type = getLoopType(text);
+      let id = secondToLastBlock.getKey();
       if (type === 'task') {
+
         text = text.slice(1);
       }
+      let newLoop = {
+        id,
+        text,
+        type,
+      }
       if (text !== '') {
-        addLoop({text, type});
+        if (type === 'task') {
+          addTask(newLoop);
+        } else if (type === 'question') {
+          addQuestion(newLoop);
+        } else if (type === 'reference') {
+          addReference(newLoop);
+        }
       }
     }
   }
