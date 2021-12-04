@@ -9,7 +9,9 @@
 
 
 
+module.exports.addLoop = (loopId, loop) => {
 
+}
 
 
 
@@ -22,13 +24,13 @@ module.exports.loops = {
     subtasks: [4],
     questions: [2],
     references: [3],
+    relatedReferences: [3],
   },
   '2': {
     type: 'question',
     text: 'How do I use arango?',
     done: false,
     references: [5],
-    relatedReferences: [3],
   },
   '3': {
     type: 'reference',
