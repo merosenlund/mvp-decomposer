@@ -13,8 +13,9 @@ const BrainDump = () => {
       let lastBlock = contentState.getLastBlock();
       let secondToLastBlock = contentState.getBlockBefore(lastBlock.getKey())
       let text = secondToLastBlock.getText();
+      let type = getLoopType(text);
       if (text !== '') {
-        addLoop(text);
+        addLoop({text, type});
       }
     }
   }
@@ -26,6 +27,17 @@ const BrainDump = () => {
     </div>
   );
 };
+
+
+const getLoopType = (text) => {
+  if (text[text.length - 1] === '?') {
+    return 'question';
+  } else if (text[0] === '-') {
+    return 'task';
+  } else {
+    return 'reference';
+  }
+}
 
 
 export default BrainDump;

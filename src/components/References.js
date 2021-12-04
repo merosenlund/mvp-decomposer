@@ -2,16 +2,16 @@ import React from 'react';
 import {useLoopContext} from '../LoopContext.js';
 
 
-const Tasks = () => {
+const References = () => {
   const loops = useLoopContext();
 
   return (
-    <div className="tasks">
+    <div className="references">
       <h5>
-        Tasks Zone!
+        References Zone!
       </h5>
       {loops.reduce((loops, loop) => {
-        if (loop.type === 'task') {
+        if (loop.type === 'reference') {
           loops.push(<div>{loop.text}</div>)
         }
         return loops;
@@ -20,4 +20,4 @@ const Tasks = () => {
   )
 }
 
-export default Tasks;
+export default References;
