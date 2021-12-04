@@ -14,16 +14,18 @@ export const addQuestionsContext = () => {
 }
 
 
-export const QuestionsProvider = ({children}) => {
+export const QuestionProvider = ({children}) => {
   const [questions, updateQuestions] = useState([]);
 
   useEffect(async () => {
-
+    let results = await getQuestions(1);
+    let newQuestions = results.data;
+    updateQuestions(newQuestions)
   }, [])
 
   const getQuestions = async (loopId) => {
     let newQuestions = await axios(`/loops/${loopId}/questions`);
-    updateQuestions(newQuestions)
+    return newQuestions;
   }
 
   const addQuestion = (newLoop) => {

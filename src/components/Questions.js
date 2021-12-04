@@ -1,15 +1,15 @@
 import React from 'react';
-import {useLoopContext} from '../contexts/LoopContext.js';
+import {useQuestionsContext} from '../contexts/QuestionContext.js';
 import LoopItem from './LoopItem.js';
 
 
 const Questions = () => {
-  const loops = useLoopContext();
+  const questions = useQuestionsContext();
 
   return (
     <div className="questions">
       <h5>Questions Zone!</h5>
-      {loops.reduce((loops, loop) => {
+      {questions.reduce((loops, loop) => {
         if (loop.type === 'question') {
           loops.push(<LoopItem item={loop}></LoopItem>)
         }
