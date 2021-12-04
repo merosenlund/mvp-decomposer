@@ -5,6 +5,7 @@ body {
 
 h5 {
   border-bottom: solid black 1px;
+  cursor: default;
 }
 
 .tasks {
