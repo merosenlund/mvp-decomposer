@@ -1,18 +1,16 @@
 import React from 'react';
-import {useLoopContext} from '../contexts/LoopContext.js';
+import {useReferencesContext} from '../contexts/ReferenceContext.js';
 import LoopItem from './LoopItem.js';
 
 
 const References = () => {
-  const loops = useLoopContext();
+  const references = useReferencesContext();
 
   return (
     <div className="references">
       <h5>References Zone!</h5>
-      {loops.reduce((loops, loop) => {
-        if (loop.type === 'reference') {
-          loops.push(<LoopItem item={loop}></LoopItem>)
-        }
+      {references.reduce((loops, loop) => {
+        loops.push(<LoopItem key={loop.id} item={loop}></LoopItem>)
         return loops;
       }, [])}
     </div>

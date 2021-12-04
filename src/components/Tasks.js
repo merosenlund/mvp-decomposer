@@ -1,18 +1,16 @@
 import React from 'react';
-import {useLoopContext} from '../contexts/LoopContext.js';
+import {useTasksContext} from '../contexts/TaskContext.js';
 import LoopItem from './LoopItem.js';
 
 
 const Tasks = () => {
-  const loops = useLoopContext();
+  const tasks = useTasksContext();
 
   return (
     <div className="tasks">
       <h5>Tasks Zone!</h5>
-      {loops.reduce((loops, loop) => {
-        if (loop.type === 'task') {
-          loops.push(<LoopItem item={loop}></LoopItem>)
-        }
+      {tasks.reduce((loops, loop) => {
+        loops.push(<LoopItem key={loop.id} item={loop}></LoopItem>)
         return loops;
       }, [])}
     </div>

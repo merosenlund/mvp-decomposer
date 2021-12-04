@@ -18,13 +18,13 @@ export const QuestionProvider = ({children}) => {
   const [questions, updateQuestions] = useState([]);
 
   useEffect(async () => {
-    let results = await getQuestions(1);
-    let newQuestions = results.data;
+    let newQuestions = await getQuestions(1);
     updateQuestions(newQuestions)
   }, [])
 
   const getQuestions = async (loopId) => {
-    let newQuestions = await axios(`/loops/${loopId}/questions`);
+    let results = await axios(`/loops/${loopId}/questions`);
+    let newQuestions = results.data;
     return newQuestions;
   }
 

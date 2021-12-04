@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const TasksContext = React.createContext();
@@ -13,8 +14,19 @@ export const addTaskContext = () => {
 }
 
 
-export const LoopProvider = ({children}) => {
+export const TaskProvider = ({children}) => {
   const [tasks, updateTasks] = useState([]);
+
+  useEffect(async () => {
+    let newTasks = await getTasks(1);
+    updateTasks(newTasks);
+  }, [])
+
+  const getTasks = async (loopId) => {
+    let results = await axios(`/loops/${loopId}/subtasks`);
+    let newTasks = results.data;
+    return newTasks;
+  }
 
   const addTask = (newLoop) => {
     // Eventually I will add an axios request here to add it to the backend and then get updated loops for the front end... I'm not sure if that will be the best idea but we'll see when I get there.

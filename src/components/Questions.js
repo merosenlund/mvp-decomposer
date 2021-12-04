@@ -10,9 +10,7 @@ const Questions = () => {
     <div className="questions">
       <h5>Questions Zone!</h5>
       {questions.reduce((loops, loop) => {
-        if (loop.type === 'question') {
-          loops.push(<LoopItem item={loop}></LoopItem>)
-        }
+        loops.push(<LoopItem key={loop.id} item={loop}></LoopItem>)
         return loops;
       }, [])}
     </div>
