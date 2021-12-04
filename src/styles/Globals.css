@@ -1,29 +1,38 @@
+body {
+  margin: 0;
+  background-color: #E7D7C2;
+}
+
+h5 {
+  border-bottom: solid black 1px;
+}
+
 .tasks {
-  background-color: tan;
+  padding: 5px;
 }
 
 .brainDump {
-  background-color: thistle;
   grid-column: span 2;
   display: flex;
   flex-direction: column;
+  padding: 5px;
 }
 
 .questions {
-  background-color: plum;
+  padding: 5px;
 }
 
 .references {
-  background-color: powderblue;
+  padding: 5px;
   grid-row: span 2;
 }
 
 #app {
-  background-color: peru;
   display: grid;
   height: 100vh;
-  grid-template-columns: 2fr 2fr 1fr;
+  grid-template-columns: 3fr 3fr 2fr;
   grid-template-rows: 1fr 1fr;
+  padding: 0 5%;
 }
 
 div.DraftEditor-root {
@@ -34,4 +43,19 @@ div.DraftEditor-root {
 div.DraftEditor-editorContainer,
 div.public-DraftEditor-content {
   height: 100%;
+}
+
+.listItemContainer {
+  cursor: default;
+  padding: 5px;
+}
+
+.listItemContainer:hover {
+  background-color: #e6d2b9;
+  /* border: inset #e7cdaa 1px; */
+  border-radius: 5px;
+}
+
+.listItem {
+  padding-left: 3px;
 }

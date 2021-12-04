@@ -1,5 +1,6 @@
 import React from 'react';
 import {useLoopContext} from '../LoopContext.js';
+import LoopItem from './LoopItem.js';
 
 
 const Questions = () => {
@@ -7,12 +8,10 @@ const Questions = () => {
 
   return (
     <div className="questions">
-      <h5>
-        Questions Zone!
-      </h5>
+      <h5>Questions Zone!</h5>
       {loops.reduce((loops, loop) => {
         if (loop.type === 'question') {
-          loops.push(<div>{loop.text}</div>)
+          loops.push(<LoopItem item={loop}></LoopItem>)
         }
         return loops;
       }, [])}

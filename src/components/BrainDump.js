@@ -14,6 +14,9 @@ const BrainDump = () => {
       let secondToLastBlock = contentState.getBlockBefore(lastBlock.getKey())
       let text = secondToLastBlock.getText();
       let type = getLoopType(text);
+      if (type === 'task') {
+        text = text.slice(1);
+      }
       if (text !== '') {
         addLoop({text, type});
       }
