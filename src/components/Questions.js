@@ -1,5 +1,5 @@
 import React from 'react';
-import {useLoopContext} from '../LoopContext.js';
+import {useLoopContext} from '../contexts/LoopContext.js';
 import LoopItem from './LoopItem.js';
 
 

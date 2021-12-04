@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Editor, EditorState} from 'draft-js';
-import {addLoopContext} from '../LoopContext.js';
+import {addLoopContext} from '../contexts/LoopContext.js';
 
 
 const BrainDump = () => {

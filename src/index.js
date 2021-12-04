@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import './styles/Globals.css';
-import {LoopProvider} from './LoopContext.js'
+import {LoopProvider} from './contexts/LoopContext.js'
 import Tasks from './components/Tasks.js';
 import Questions from './components/Questions.js';
 import References from './components/References.js';
