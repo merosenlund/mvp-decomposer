@@ -1,18 +1,13 @@
 import React from 'react';
-import {useTasksContext} from '../contexts/TaskContext.js';
-import LoopItem from './LoopItem.js';
+import {useLoopContext} from '../contexts/LoopContext.js';
 
 
 const Header = () => {
-  const tasks = useTasksContext();
-
+  const loop = useLoopContext();
   return (
-    <div className="tasks">
-      <h5>Tasks Zone!</h5>
-      {tasks.reduce((loops, loop) => {
-        loops.push(<LoopItem key={loop.id} item={loop}></LoopItem>)
-        return loops;
-      }, [])}
+    <div className="header">
+      <h3>Header Zone!</h3>
+      <p>{loop.id}</p>
     </div>
   )
 }

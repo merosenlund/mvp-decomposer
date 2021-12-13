@@ -2,6 +2,7 @@ const data = require('./db.js').loops;
 
 
 module.exports.getReferences = (loopId) => {
+  debugger;
   let referenceIds = data[loopId].references;
   let references = referenceIds.map((id) => {
     let reference = data[id];

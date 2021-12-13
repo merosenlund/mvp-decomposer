@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
 
@@ -15,15 +15,25 @@ export const addLoopContext = () => {
 
 
 export const LoopProvider = ({children}) => {
-  const [currentLoop, updateCurrentLoop] = useState(1);
+  const [currentLoop, updateCurrentLoop] = useState(null);
 
+
+  useEffect( async () => {
+    let loop = await getLoop(1);
+    updateCurrentLoop(loop);
+  }, [])
+
+  const getLoop = async (loopId) => {
+    let loop = await axios.get(`/loops/${loopId}`);
+    return loop;
+  }
 
 
   const addLoop = (loop) => {
     return axios.post('/loops', {
       data: {
         loop: loop,
-        parentId: currentLoop
+        parentId: currentLoop.id
       }
     })
   }
@@ -31,7 +41,7 @@ export const LoopProvider = ({children}) => {
   return (
     <LoopContext.Provider value={currentLoop}>
       <AddLoopContext.Provider value={addLoop}>
-        {children}
+        {currentLoop ? children : null}
       </AddLoopContext.Provider>
     </LoopContext.Provider>
   )

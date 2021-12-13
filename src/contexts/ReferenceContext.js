@@ -21,7 +21,7 @@ export const ReferenceProvider = ({children}) => {
   const addLoop = addLoopContext();
 
   useEffect(async () => {
-    let newReferences = await getReferences(currentLoop);
+    let newReferences = await getReferences(currentLoop.id);
     updateReferences(newReferences)
   }, [])
 
@@ -33,7 +33,7 @@ export const ReferenceProvider = ({children}) => {
 
   const addReference = async (loop) => {
     await addLoop(loop);
-    let newLoops = await getReferences(currentLoop);
+    let newLoops = await getReferences(currentLoop.id);
     updateReferences(newLoops);
   }
 

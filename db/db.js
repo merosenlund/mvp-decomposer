@@ -16,7 +16,9 @@ module.exports.addLoop = (loop, parentId) => {
 }
 
 module.exports.getLoop = (loopId) => {
-  return module.exports.loops[loopId];
+  let loop = module.exports.loops[loopId];
+  loop.id = parseInt(loopId);
+  return loop;
 }
 
 
